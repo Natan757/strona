@@ -234,7 +234,7 @@ app.all('/integrations/:path{.+}', async (c, next) => {
     redirect: 'manual',
     headers: {
       ...c.req.header(),
-      'X-Forwarded-For': process.env.NEXT_PUBLIC_CREATE_HOST,
+      'X-Forwarded-For': process.env.NEXT_PUBLIC_CREATE_FOR,
       'x-createxyz-host': process.env.NEXT_PUBLIC_CREATE_HOST,
       Host: process.env.NEXT_PUBLIC_CREATE_HOST,
       'x-createxyz-project-group-id': process.env.NEXT_PUBLIC_PROJECT_GROUP_ID,
@@ -248,9 +248,18 @@ app.use('/api/auth/*', async (c, next) => {
   }
   return next();
 });
-app.route(API_BASENAME, api);
 
-export default await createHonoServer({
+// POPRAWKA: Bezpieczne ładowanie API
+try {
+  app.route(API_BASENAME, api);
+} catch (e) {
+  console.warn("API routes could not be registered:", e);
+}
+
+// EKSPORT DLA SERWERA
+const server = await createHonoServer({
   app,
   defaultLogger: false,
 });
+
+export default server;
