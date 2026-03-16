@@ -16,18 +16,17 @@ import { restartEnvFileChange } from './plugins/restartEnvFileChange';
 export default defineConfig({
   // Keep them available via import.meta.env.NEXT_PUBLIC_*
   envPrefix: 'NEXT_PUBLIC_',
-  export default defineConfig({
-  plugins: [reactRouter(), tsconfigPaths()],
+  
+  // POPRAWKA NA TOP-LEVEL AWAIT
   build: {
-    target: "esnext" // To mówi Vite, żeby pozwolił na "Top-level await"
+    target: "esnext"
   },
+
   optimizeDeps: {
+    // POPRAWKA NA TOP-LEVEL AWAIT DLA BUNA/ESBUILD
     esbuildOptions: {
       target: "esnext"
-    }
-  }
-});
-  optimizeDeps: {
+    },
     // Explicitly include fast-glob, since it gets dynamically imported and we
     // don't want that to cause a re-bundle.
     include: ['fast-glob', 'lucide-react'],
@@ -35,14 +34,15 @@ export default defineConfig({
       '@hono/auth-js/react',
       '@hono/auth-js',
       '@auth/core',
-      '@hono/auth-js',
       'hono/context-storage',
       '@auth/core/errors',
       'fsevents',
       'lightningcss',
     ],
   },
+  
   logLevel: 'info',
+  
   plugins: [
     nextPublicProcessEnv(),
     restartEnvFileChange(),
@@ -51,10 +51,10 @@ export default defineConfig({
       runtime: 'node',
     }),
     babel({
-      include: ['src/**/*.{js,jsx,ts,tsx}'], // or RegExp: /src\/.*\.[tj]sx?$/
-      exclude: /node_modules/, // skip everything else
+      include: ['src/**/*.{js,jsx,ts,tsx}'], 
+      exclude: /node_modules/, 
       babelConfig: {
-        babelrc: false, // don’t merge other Babel files
+        babelrc: false, 
         configFile: false,
         plugins: ['styled-jsx/babel'],
       },
@@ -77,6 +77,7 @@ export default defineConfig({
     aliases(),
     layoutWrapperPlugin(),
   ],
+
   resolve: {
     alias: {
       lodash: 'lodash-es',
@@ -88,7 +89,9 @@ export default defineConfig({
     },
     dedupe: ['react', 'react-dom'],
   },
+
   clearScreen: false,
+
   server: {
     allowedHosts: true,
     host: '0.0.0.0',
