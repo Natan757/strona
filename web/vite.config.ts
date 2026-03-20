@@ -80,7 +80,7 @@ export default defineConfig({
     tsconfigPaths(),
     aliases(),
     layoutWrapperPlugin(),
-  ]!filter(Boolean),
+  ].filter(Boolean),
 
   resolve: {
     alias: {
