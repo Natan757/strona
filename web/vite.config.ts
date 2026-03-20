@@ -13,6 +13,8 @@ import { nextPublicProcessEnv } from './plugins/nextPublicProcessEnv';
 import { restart } from './plugins/restart';
 import { restartEnvFileChange } from './plugins/restartEnvFileChange';
 
+const isPages = process.env.PAGES === '1';
+
 export default defineConfig({
   // Keep them available via import.meta.env.NEXT_PUBLIC_*
   envPrefix: 'NEXT_PUBLIC_',
@@ -46,10 +48,12 @@ export default defineConfig({
   plugins: [
     nextPublicProcessEnv(),
     restartEnvFileChange(),
-    reactRouterHonoServer({
-      serverEntryPoint: './__create/index.ts',
-      runtime: 'node',
-    }),
+    !isPages &&
+  reactRouterHonoServer({
+    serverEntryPoint: './__create/index.ts',
+    runtime: 'node',
+    ].filter(Boolean),
+  }),
     babel({
       include: ['src/**/*.{js,jsx,ts,tsx}'], 
       exclude: /node_modules/, 
