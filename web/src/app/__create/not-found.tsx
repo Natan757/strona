@@ -15,13 +15,11 @@ export default function CreateDefaultNotFoundPage() {
   const [siteMap, setSitemap] = useState<ParentSitemap | null>(null);
   const navigate = useNavigate();
 
-  // W SPA nie ma loadera, więc bierzemy "brakującą ścieżkę" z przeglądarki
   const missingPath = useMemo(() => {
     if (typeof window === 'undefined') return '';
     return window.location.pathname.replace(/^\//, '');
   }, []);
 
-  // W SPA też nie ma server-side globowania - robimy to w przeglądarce
   const existingRoutes = useMemo(() => {
     if (typeof window === 'undefined') return [];
     const matches = fg.sync('src/**/page.{js,jsx,ts,tsx}');
@@ -29,8 +27,7 @@ export default function CreateDefaultNotFoundPage() {
     return matches
       .sort((a, b) => a.length - b.length)
       .map((match) => {
-        const url =
-          match.replace('src/app', '').replace(/\/page\.(js|jsx|ts|tsx)$/, '') || '/';
+        const url = match.replace('src/app', '').replace(/\/page\.(js|jsx|ts|tsx)$/, '') || '/';
         const path = url.replaceAll('[', '').replaceAll(']', '');
         const displayPath = path === '/' ? 'Homepage' : path;
         return { url, path: displayPath };
@@ -46,12 +43,7 @@ export default function CreateDefaultNotFoundPage() {
         }
       };
 
-      window.parent.postMessage(
-        {
-          type: 'sandbox:sitemap',
-        },
-        '*'
-      );
+      window.parent.postMessage({ type: 'sandbox:sitemap' }, '*');
       window.addEventListener('message', handler);
 
       return () => {
@@ -66,8 +58,7 @@ export default function CreateDefaultNotFoundPage() {
 
   const handleSearch = (value: string) => {
     if (!siteMap) {
-      const path = `/${value}`;
-      navigate(path);
+      navigate(`/${value}`);
     } else {
       navigate(value);
     }
@@ -152,8 +143,9 @@ export default function CreateDefaultNotFoundPage() {
                 Create a new page to live at "<span>/{missingPath}</span>"
               </p>
             </div>
+
             <div className="flex flex-row items-center justify-end w-1/2">
               <button
                 type="button"
-                className="bg-black text-white px-[10
+               
 
