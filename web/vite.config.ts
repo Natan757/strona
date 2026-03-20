@@ -49,20 +49,20 @@ export default defineConfig({
     nextPublicProcessEnv(),
     restartEnvFileChange(),
     !isPages &&
-  reactRouterHonoServer({
-    serverEntryPoint: './__create/index.ts',
-    runtime: 'node',
-    ].filter(Boolean),
-  }),
+      reactRouterHonoServer({
+        serverEntryPoint: './__create/index.ts',
+        runtime: 'node',
+      }),
     babel({
-      include: ['src/**/*.{js,jsx,ts,tsx}'], 
-      exclude: /node_modules/, 
+      include: ['src/**/*.{js,jsx,ts,tsx}'],
+      exclude: /node_modules/,
       babelConfig: {
-        babelrc: false, 
+        babelrc: false,
         configFile: false,
         plugins: ['styled-jsx/babel'],
       },
     }),
+      ]!filter(Boolean),
     restart({
       restart: [
         'src/**/page.jsx',
