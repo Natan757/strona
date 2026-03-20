@@ -438,14 +438,14 @@ export default function TapierstwoPage() {
           <div>
             <h4 className="font-semibold mb-4">Kontakt</h4>
             <ul className="space-y-2 text-[#D4C5B0] text-sm">
-              <li>hello@bagsbyaga.com</li>
-              <li>+48 123 456 789</li>
-              <li>Warszawa, Polska</li>
+              <li>bagsbyaga@gmail.com</li>
+              <li>+48 606 643 742</li>
+              <li>Busko-Zdrój, Polska</li>
             </ul>
           </div>
         </div>
         <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-[#4A3F30] text-center text-[#D4C5B0] text-sm">
-          © 2024 BagsByAga. Wszystkie prawa zastrzeżone.
+          © 2026 BagsByAga. Wszystkie prawa zastrzeżone.
         </div>
       </footer>
     </div>
