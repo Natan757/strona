@@ -264,7 +264,7 @@ export default function KontaktPage() {
                       href="mailto:hello@bagsbyaga.com"
                       className="text-[#8B7355] hover:text-[#2C2416] transition-colors"
                     >
-                      hello@bagsbyaga.com
+                      bagsbyaga@gmail.com
                     </a>
                   </div>
                 </div>
@@ -281,7 +281,7 @@ export default function KontaktPage() {
                       href="tel:+48123456789"
                       className="text-[#8B7355] hover:text-[#2C2416] transition-colors"
                     >
-                      +48 123 456 789
+                      +48 606 643 742
                     </a>
                   </div>
                 </div>
@@ -295,8 +295,8 @@ export default function KontaktPage() {
                       Adres pracowni
                     </h3>
                     <p className="text-[#5C5346]">
-                      ul. Rycerska 9<br />
-                      00-000 Warszawa
+                      ul. Siesławice 207D<br />
+                      28-100 Busko-Zdrój
                       <br />
                       Polska
                     </p>
@@ -312,9 +312,9 @@ export default function KontaktPage() {
                       Godziny otwarcia
                     </h3>
                     <p className="text-[#5C5346]">
-                      Pn–Pt: 10:00–18:00
+                      Pn–Pt: 15:00–23:00
                       <br />
-                      Sb: 11:00–15:00
+                      Sb: 10:00–23:00
                       <br />
                       Nd: zamknięte
                     </p>
@@ -330,12 +330,12 @@ export default function KontaktPage() {
                       Śledź nas
                     </h3>
                     <a
-                      href="https://instagram.com/bagsbyaga"
+                      href="https://instagram.com/bags_by_aga"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#8B7355] hover:text-[#2C2416] transition-colors"
                     >
-                      @bagsbyaga
+                      @bags_by_aga
                     </a>
                   </div>
                 </div>
@@ -347,7 +347,7 @@ export default function KontaktPage() {
                   Otwarty dzień pracowni
                 </h3>
                 <p className="text-[#5C5346] mb-2">
-                  Każdy czwartek 14:00–18:00
+                  Każdą sobote 15:00–17:00
                 </p>
                 <p className="text-sm text-[#5C5346]">
                   Zapraszamy do spaceru po warsztacie, obejrzenia procesu,
