@@ -62,7 +62,7 @@ export default defineConfig({
         plugins: ['styled-jsx/babel'],
       },
     }),
-      ]!filter(Boolean),
+      ]!filter(Boolean)
     restart({
       restart: [
         'src/**/page.jsx',
@@ -80,7 +80,7 @@ export default defineConfig({
     tsconfigPaths(),
     aliases(),
     layoutWrapperPlugin(),
-  ],
+  ]!filter(Boolean),
 
   resolve: {
     alias: {
