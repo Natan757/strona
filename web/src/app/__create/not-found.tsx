@@ -147,5 +147,3 @@ export default function CreateDefaultNotFoundPage() {
             <div className="flex flex-row items-center justify-end w-1/2">
               <button
                 type="button"
-               
-
