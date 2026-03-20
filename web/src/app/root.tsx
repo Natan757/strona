@@ -35,9 +35,10 @@ import { useDevServerHeartbeat } from '../__create/useDevServerHeartbeat';
 import type { Route } from './+types/root';
 
 export const links = () => [];
+const IS_PAGES = import.meta.env.NEXT_PUBLIC_PAGES === '1';
 
-if (globalThis.window && globalThis.window !== undefined) {
-  globalThis.window.fetch = fetch;
+if (!IS_PAGES && typeof window !== 'undefined') {
+  window.fetch = fetch as any;
 }
 
 const LoadFontsSSR = import.meta.env.SSR ? LoadFonts : null;
@@ -453,6 +454,10 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function App() {
+  if (IS_PAGES) {
+    return <Outlet />;
+  }
+
   return (
     <SessionProvider>
       <Outlet />
