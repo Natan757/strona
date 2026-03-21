@@ -8,7 +8,7 @@ const bags = [
     price: "590 zł",
     description:
       'Funkcjonalny tote bag z bydlęcej skóry naturalnej. Pojemność na laptop 13" i dokumenty A4.',
-    image: null,
+    image: "/images/bags/shopper-essential.jpg",
     features: ["Skóra bydlęca", "Ręczne szwy", "Podszewka z płótna"],
   },
   {
@@ -18,7 +18,7 @@ const bags = [
     price: "450 zł",
     description:
       "Kompaktowa torebka na ramię, idealna na co dzień. Kieszeń wewnętrzna na telefon.",
-    image: null,
+    image: "/images/bags/crossbody-classic.jpg",
     features: ["Skóra naturalna", "Regulowany pasek", "Zamek YKK"],
   },
   {
@@ -28,7 +28,7 @@ const bags = [
     price: "1250 zł",
     description:
       "Numerowana torebka z kolekcji limitowanej. Pikowanie wykonane techniką tapicerską.",
-    image: null,
+    image: "/images/bags/artisan-no-1.jpg",
     features: ["Skóra włoska", "Numerowany egzemplarz", "Pikowanie ręczne"],
   },
   {
@@ -38,7 +38,7 @@ const bags = [
     price: "1890 zł",
     description:
       "Podróżna torba wykończona tkaniną tapicerską. Kunszt w każdym detalu.",
-    image: null,
+    image: "/images/bags/weekend-bag.jpg",
     features: ["Skóra + tkanina", "Wyściełane dno", "Mosiężne okucia"],
   },
   {
@@ -157,13 +157,29 @@ export default function TorebkiPage() {
                 key={bag.id}
                 className="group bg-white border border-[#E5E3DC] hover:border-[#8B7355] transition-all duration-300 overflow-hidden"
               >
-                {/* Image placeholder */}
-                <div className="relative bg-[#F0EDE5] aspect-[3/4] flex items-center justify-center overflow-hidden">
-                  <ShoppingBag
-                    size={80}
-                    className="text-[#D4C5B0]"
-                    strokeWidth={1}
-                  />
+                {/* Image */}
+                <div className="relative bg-[#F0EDE5] aspect-[3/4] overflow-hidden">
+                  {bag.image ? (
+                    <img
+                      src={bag.image}
+                      alt={bag.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
+                    />
+                  ) : null}
+
+                  {/* Fallback placeholder */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <ShoppingBag
+                      size={80}
+                      className="text-[#D4C5B0]"
+                      strokeWidth={1}
+                    />
+                  </div>
+
                   <button className="absolute top-4 right-4 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors">
                     <Heart size={20} className="text-[#2C2416]" />
                   </button>
